@@ -1,82 +1,96 @@
 <template>
   <div>
-    <el-row>
-      <h1>First Conversation</h1>
-      <el-button type="success" round @click="playPuzzle">Play</el-button>
-    </el-row>
 
-    <el-row :gutter="20">
-      <vue-typer :text="his" :repeat="0"></vue-typer>
-      <vue-typer :text="hers" :repeat="0"></vue-typer>
-    </el-row>
+  <el-container>
+    <el-aside width="400px">
+      <div style="position: fixed; margin-left:20px;">
+      <el-row :gutter="20">
+        <el-col :span="24">
+        <h1>First Conversation</h1>
+        <h1>Monster Level: {{monster}}</h1>
+        </el-col>
+      </el-row>
+      </div>
+    </el-aside>
 
-    <el-row :gutter="20">
-      <el-col :span="4">
-            <el-card shadow="always" style="background:#67c23a; color:white">
-              <h3>Starting Point</h3>
-              <el-popover
-                ref="pop"
-                placement="top-start"
-                content="Thanks for coming!"
-                trigger="hover">
-                <i slot="reference" class="el-icon-zoom-in"></i>
-              </el-popover>
-            </el-card>
-      </el-col>
+    <el-container>
+      <el-main>
+        <el-row :gutter="20">
+          <el-col :span="16">
 
-      <draggable v-model="set" :options="{group:'together'}">
-        <transition-group>
-          <el-col :span="4" v-for="piece in set" :key="piece.name">
-            <el-card shadow="always" :class="piece.background" v-show="checkDefault(piece.default)">
-              <h3>{{piece.name}}</h3>
+            <el-col :span="24" style="margin-bottom:5px;">
+              <el-card shadow="always" style="background:darkcyan; color:white">
+                <h3>Starting Point</h3>
+              </el-card>
+            </el-col>
 
-              <el-popover
-                v-show="!piece.default"
-                ref="pop"
-                placement="top-start"
-                :content="piece.you"
-                trigger="hover">
-                <i class="el-icon-zoom-in" slot="reference"></i>
-              </el-popover>
+            <el-col :span="24" v-for="piece in set" :key="piece.name" style="margin-bottom:5px;">
+              <el-card shadow="always" :class="piece.background">
+                <h3>{{piece.name}}</h3>
+              </el-card>
+            </el-col>
 
-            </el-card>
+            <el-col :span="24" style="margin-bottom:15px;">
+              <el-card shadow="hover" style="border-style:dashed;border-color:lightgrey">
+                <el-button type="primary" @click="dialogVisible = true" icon="el-icon-circle-plus-outline"></el-button>
+
+
+
+              </el-card>
+            </el-col>
+
+            <el-col :span="24" style="margin-bottom:5px;">
+              <el-card shadow="always">
+                <h3>{{set.length}}/10</h3>
+              </el-card>
+            </el-col>
+
           </el-col>
-        </transition-group>
-      </draggable>
 
-      <el-col :span="4">
-        <el-card shadow="always" style="background:#909399; color:white">
-          <h3>End</h3>
-          <el-popover
-            ref="pop"
-            placement="top-start"
-            content="Thanks for coming!"
-            trigger="hover">
-            <i slot="reference" class="el-icon-zoom-in"></i>
-          </el-popover>
-        </el-card>
-      </el-col>
-    </el-row>
+        </el-row>
 
-    <el-row :gutter="20">
-     <draggable v-model="pieces" :options="{group:'together'}">
-       <transition-group>
-         <el-col :span="4" v-for="piece in pieces" :key="piece.name">
-           <el-card shadow="always" :class="piece.background">
-             <h3>{{piece.name}}</h3>
 
-             <el-popover
-               ref="pop"
-               placement="top-start"
-               :content="piece.you"
-               trigger="hover">
-               <i class="el-icon-zoom-in" slot="reference"></i>
-             </el-popover>
-           </el-card>
-         </el-col>
-       </transition-group>
-     </draggable>
-    </el-row>
+      </el-main>
+    </el-container>
+
+
+
+  </el-container>
+
+    <el-dialog
+      title="Pieces"
+      :visible.sync="dialogVisible"
+      :modal-append-to-body="false"
+    >
+      <el-row :gutter="20" style="margin:auto auto">
+        <el-col :span="6" v-for="piece in pieces" :key="piece.name" style="margin-bottom: 5px;">
+          <el-card shadow="always">
+            <h3 @click="openConversation(piece)">{{piece.name}}</h3>
+
+          </el-card>
+        </el-col>
+      </el-row>
+    </el-dialog>
+
+    <el-dialog
+      :visible.sync="conversationOpen"
+      :modal-append-to-body="false"
+      :show-close="false"
+      :close-on-click-modal="false"
+      :close-on-press-escape="false">
+      <div>
+        <h2>You<h3><vue-typer :text="currentPiece.you" :repeat="0"></vue-typer> </h3></h2>
+
+        <h2>Them<h3><vue-typer
+          :text="currentPiece.them"
+          :repeat="0"
+          @completed="closeConversation(currentPiece)"
+          :pre-type-delay="0"></vue-typer> </h3></h2>
+
+        <el-button v-show="badButton" @click="finish">Bad</el-button>
+        <el-button v-show="goodButton" @click="finish">Good</el-button>
+      </div>
+    </el-dialog>
 
   </div>
 </template>
@@ -90,12 +104,77 @@
 
     data() {
       return {
-        his: '',
-        hers: '',
+        dialogVisible: false,
+        conversationOpen: false,
+        goodButton: false,
+        badButton: false,
+
+        currentPiece: {},
+        monster: 0,
+
         set: [
           {
-            name: 'Drag Blocks Here',
-            default: true,
+            name: 'Weather',
+            you: 'It looks like it might rain.',
+            them: 'Really?',
+            monster: 1,
+            background: 'bad',
+          },
+          {
+            name: 'Hair',
+            you: 'I like your hair - it is very poofy',
+            them: '.....',
+            monster: 5,
+            background: 'bad',
+          },
+          {
+            name: 'Hobby: Trains',
+            you: 'I love collecting toy trains.',
+            them: 'Me too!',
+            monster: -1,
+            background: 'good',
+          },
+          {
+            name: 'Hobby: Stamps',
+            you: 'I love collecting stamps.',
+            them: 'Is this the 1960\'s?',
+            monster: 1,
+            background: 'good',
+          },
+          {
+            name: 'Mother',
+            you: 'Sorry, my mother couldn\'t make it.',
+            them: 'I\'m glad...',
+            monster: 5,
+            background: 'bad',
+          },
+          {
+            name: 'Nervous',
+            you: 'I am a little nervous, sorry.',
+            them: 'It\'s ok, I am too.',
+            monster: -5,
+            background: 'good',
+          },
+          {
+            name: '1',
+            you: '1',
+            them: '1',
+            monster: -5,
+            background: 'good',
+          },
+          {
+            name: '2',
+            you: '2',
+            them: '2',
+            monster: -5,
+            background: 'good',
+          },
+          {
+            name: '3',
+            you: '3',
+            them: '3',
+            monster: -5,
+            background: 'good',
           },
         ],
 
@@ -105,19 +184,78 @@
             name: 'Weather',
             you: 'It looks like it might rain.',
             them: 'Really?',
-            anger: 1,
+            monster: 1,
+            background: 'bad',
           },
           {
             name: 'Hair',
             you: 'I like your hair - it is very poofy',
             them: '.....',
-            anger: 5,
+            monster: 5,
+            background: 'bad',
           },
           {
-            name: 'Piece 3',
-            you: 'It looks like it might rain.',
-            them: 'Really?',
-            anger: 1,
+            name: 'Hobby: Trains',
+            you: 'I love collecting toy trains.',
+            them: 'Me too!',
+            monster: -1,
+            background: 'good',
+          },
+          {
+            name: 'Hobby: Stamps',
+            you: 'I love collecting stamps.',
+            them: 'Is this the 1960\'s?',
+            monster: 1,
+            background: 'good',
+          },
+          {
+            name: 'Mother',
+            you: 'Sorry, my mother couldn\'t make it.',
+            them: 'I\'m glad...',
+            monster: 5,
+            background: 'bad',
+          },
+          {
+            name: 'Nervous',
+            you: 'I am a little nervous, sorry.',
+            them: 'It\'s ok, I am too.',
+            monster: -5,
+            background: 'good',
+          },
+          {
+            name: '1',
+            you: '1',
+            them: '1',
+            monster: -5,
+            background: 'good',
+          },
+          {
+            name: '2',
+            you: '2',
+            them: '2',
+            monster: -5,
+            background: 'good',
+          },
+          {
+            name: '3',
+            you: '3',
+            them: '3',
+            monster: -5,
+            background: 'good',
+          },
+          {
+            name: '4',
+            you: '4',
+            them: '4',
+            monster: 5,
+            background: 'good',
+          },
+          {
+            name: '5',
+            you: '5',
+            them: '5',
+            monster: 15,
+            background: 'good',
           },
         ],
       };
@@ -126,36 +264,73 @@
     name: 'AudioPuzzle',
 
     methods: {
-      playPuzzle() {
-        this.his = "You: I'm here";
+      openConversation(piece) {
+        this.currentPiece = piece;
+        this.goodButton = false;
+        this.badButton = false;
+
+        this.monster += piece.monster;
+
+        this.dialogVisible = false;
+        this.conversationOpen = true;
       },
 
-      checkDefault(isDefault) {
-        if (isDefault && this.set.length > 1) {
-          return false;
+      closeConversation(piece) {
+        this.isGoodButton(piece.monster <= 0);
+        this.set.push(piece);
+
+        this.pieces = this.pieces.filter(val => val.name !== piece.name);
+      },
+
+      finish() {
+        this.conversationOpen = false;
+
+        if (this.set.length < 10) {
+          return;
         }
 
-        return true;
+        if (this.monster <= 0) {
+          this.$router.push({ path: 'ending/good' });
+          return;
+        }
+
+        if (this.monster > 0 && this.monster < 10) {
+          this.$router.push({ path: 'ending/neutral' });
+          return;
+        }
+
+        this.$router.push({ path: 'ending/bad' });
+      },
+
+      isGoodButton(good) {
+        if (good) {
+          this.goodButton = true;
+          return;
+        }
+
+        this.badButton = true;
       },
     },
-
   };
 </script>
 
 <style>
-  .his{
-    background: darkcyan;
+  .good{
+    background: #67c23a;
     color: white;
   }
 
-  .hers{
+  .bad{
     background: lightcoral;
+    color:white;
   }
 
   .el-row {
     margin-bottom: 20px;
-  &:last-child {
-     margin-bottom: 0;
-   }
   }
+
+  .el-dialog {
+    margin-left:55px;
+  }
+
 </style>
