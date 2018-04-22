@@ -1,8 +1,10 @@
-# vue-starter
+# datinghorror
 
-> A Vue.js starter kit that lets you focus on more programming and less configruation.
+A Vue.js horror dating game build for the [LudumDare 41 Compo event](https://ldjam.com/events/ludum-dare/41).
 
-## Build Setup
+**[Play the Game](http://til-ember-078987.s3-website-us-east-1.amazonaws.com/#/)**
+
+## Run Locally 
 
 ``` bash
 # install dependencies
@@ -14,10 +16,3 @@ npm run dev
 # build for production with minification
 npm run build
 ```
-# build for production and view the bundle analyzer report
-npm run build --report
-
-
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
-=======
