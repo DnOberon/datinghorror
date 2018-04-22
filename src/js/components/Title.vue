@@ -53,6 +53,7 @@
         titleSong: new Howl({
           src: [require('../../assets/titlescreen.wav')],
           autoplay: true,
+          html5: true,
         }),
       };
     },

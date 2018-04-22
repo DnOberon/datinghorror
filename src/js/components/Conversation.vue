@@ -150,11 +150,13 @@
         closeSong: new Howl({
           src: [require('../../assets/final.wav')],
           volume: 0.0,
+          html5: true,
         }),
 
         endingSong: new Howl({
           src: [require('../../assets/win.wav')],
           volume: 0.0,
+          html5: true,
         }),
 
         currentPiece: {},
