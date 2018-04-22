@@ -146,8 +146,15 @@
         forward: false,
         help: true,
         date: this.$route.query.date,
+
         closeSong: new Howl({
           src: [require('../../assets/final.wav')],
+          volume: 0.0,
+        }),
+
+        endingSong: new Howl({
+          src: [require('../../assets/win.wav')],
+          volume: 0.0,
         }),
 
         currentPiece: {},
@@ -172,6 +179,8 @@
 
         if (this.set.length === 3) {
           this.closeSong.play();
+
+          this.closeSong.fade(0.0, 1.0, 2000);
         }
       },
 
@@ -194,6 +203,11 @@
         if (this.set.length < 7) {
           return;
         }
+
+        this.closeSong.fade(1.0, 0.0, 500);
+
+        this.endingSong.play();
+        this.endingSong.fade(0.0, 1.0, 1000);
 
         this.$router.push({ path: 'ending', query: { monster: this.monster } });
       },
