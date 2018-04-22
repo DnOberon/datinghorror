@@ -6,22 +6,24 @@
     </h1>
 
     <el-col :span="12" :offset="6">
+      <h2>
       <vue-typer
         :text="titleText"
         @completed="ready = true"
         :repeat="0"
         :pre-type-delay="3000"></vue-typer>
+      </h2>
     </el-col>
 
 
     <transition name="fade">
       <el-row :gutter="20" v-show="ready">
         <el-col :span="6" :offset="6" style="margin-top: 10px;">
-          <el-button type="info" @click="next('female')">Date Melinda</el-button>
+          <el-button type="info" class="pixel" @click="next('female')">Date Melinda</el-button>
         </el-col>
 
         <el-col :span="6" style="margin-top: 10px;">
-          <el-button type="info" @click="next('male')">Date Robert</el-button>
+          <el-button type="info" class="pixel" @click="next('male')">Date Robert</el-button>
         </el-col>
 
       </el-row>
@@ -60,6 +62,14 @@
   h1, h2 {
     font-family: 'VT323', monospace;
     font-weight: normal;
+    margin-bottom: 0px;
+  }
+
+  .pixel{
+    font-family: 'VT323', monospace;
+    font-weight: normal;
+    font-size: 1.5em;
+    margin-top:10px;
   }
 
   ul {
