@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Title from '../components/Title';
-import FirstConversation from '../components/FirstConversation';
+import Conversation from '../components/Conversation';
 import GoodEnding from '../components/GoodEnding';
 import BadEnding from '../components/BadEnding';
 import NeutralEnding from '../components/NeutralEnding';
@@ -16,9 +16,9 @@ export default new Router({
       component: Title,
     },
     {
-      path: '/first-conversation',
-      name: 'First Conversation',
-      component: FirstConversation,
+      path: '/conversation',
+      name: 'Conversation',
+      component: Conversation,
     },
     {
       path: '/ending/good',

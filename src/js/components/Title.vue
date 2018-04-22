@@ -19,11 +19,11 @@
     <transition name="fade">
       <el-row :gutter="20" v-show="ready">
         <el-col :span="6" :offset="6" style="margin-top: 10px;">
-          <el-button type="info" class="pixel" @click="next('female')">Date Melinda</el-button>
+          <el-button type="info" class="pixel" @click="next('melinda')">Date Melinda</el-button>
         </el-col>
 
         <el-col :span="6" style="margin-top: 10px;">
-          <el-button type="info" class="pixel" @click="next('male')">Date Robert</el-button>
+          <el-button type="info" class="pixel" @click="next('robert')">Date Robert</el-button>
         </el-col>
 
       </el-row>
@@ -40,6 +40,11 @@
   export default {
     name: 'Title',
 
+    mounted() {
+      const test = new Audio(require('../../assets/titlescreen.wav'));
+      test.loop = true;
+    },
+
     components: { VueTyper },
 
     data() {
@@ -50,8 +55,8 @@
     },
 
     methods: {
-      next(sex) {
-        this.$router.push({ path: 'first-conversation', query: { sex } });
+      next(date) {
+        this.$router.push({ path: 'conversation', query: { date } });
       },
     },
   };
