@@ -179,7 +179,7 @@
         this.dialogVisible = false;
         this.conversationOpen = true;
 
-        if (this.set.length === 3) {
+        if (this.set.length === 2) {
           this.closeSong.play();
 
           this.closeSong.fade(0.0, 1.0, 2000);

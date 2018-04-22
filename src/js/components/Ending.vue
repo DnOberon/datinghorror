@@ -55,7 +55,7 @@
           {
             display: 'R.I.P',
             secondary: 'It will be a closed casket funeral, might be empty too.',
-            max: 15,
+            max: 10000,
             img: require('../../assets/props/grave.png'),
           },
         ],

@@ -3,7 +3,7 @@
 
     <h1 style="margin-bottom: 0px;">
       <vue-typer
-        :pre-type-delay="3000"
+        :pre-type-delay="1500"
         text="Puzzled and Dating a Monster."
         :repeat="0"></vue-typer>
     </h1>
@@ -14,7 +14,7 @@
         :text="titleText"
         @completed="ready = true"
         :repeat="0"
-        :pre-type-delay="7000"></vue-typer>
+        :pre-type-delay="5000"></vue-typer>
       </h2>
     </el-col>
 
