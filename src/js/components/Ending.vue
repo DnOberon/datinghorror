@@ -47,7 +47,7 @@
             img: require('../../assets/props/phone.png'),
           },
           {
-            display: 'If you were an Uber driver - I wouldn\'t expect five stars.,',
+            display: 'If you were an Uber driver - I wouldn\'t expect five stars..',
             secondary: 'Thankfully no one threw up during the date.',
             max: 7,
             img: require('../../assets/props/rating.png'),
