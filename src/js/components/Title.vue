@@ -40,17 +40,13 @@
   export default {
     name: 'Title',
 
-    mounted() {
-      const test = new Audio(require('../../assets/titlescreen.wav'));
-      test.loop = true;
-    },
-
     components: { VueTyper },
 
     data() {
       return {
         titleText: 'Small talk could save your life.',
         ready: false,
+        titleSong: new Audio(require('../../assets/titlescreen.wav')),
       };
     },
 
@@ -62,7 +58,6 @@
   };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
   h1, h2 {
     font-family: 'VT323', monospace;

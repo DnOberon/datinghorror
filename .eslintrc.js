@@ -35,7 +35,9 @@ module.exports = {
     }],
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
-    'global-require': "off"
+    'global-require': "off",
+    'no-param-reassign': "off",
+    'no-plusplus': "off"
   },
   "globals": {
     "describe": true,
