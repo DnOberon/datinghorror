@@ -6,6 +6,7 @@ export default {
       robert: 'Yeah, I guess.',
       melinda: 'It does look cloudy.',
       monster: 0,
+      delay: 4000,
     },
     {
       name: 'Bench',
@@ -13,6 +14,7 @@ export default {
       robert: 'Don\'t forget it\'s brown too.',
       melinda: 'I guess I\'m glad you\'re not blind',
       monster: 0,
+      delay: 4000,
     },
     {
       name: 'Nickname',
@@ -20,6 +22,7 @@ export default {
       robert: 'What about the gangster or love?',
       melinda: 'Yeah, ok Maurice.',
       monster: 0,
+      delay: 4000,
     },
     {
       name: 'Apple',
@@ -28,6 +31,7 @@ export default {
       melinda: 'No.',
       monster: 1,
       background: 'bad',
+      delay: 4000,
     },
     {
       name: 'Stamps',
@@ -36,6 +40,7 @@ export default {
       melinda: 'Makes sense, not sure anyone wants a letter from you.',
       monster: 2,
       background: 'bad',
+      delay: 4000,
     },
     {
       name: 'Top Gun',
@@ -44,14 +49,16 @@ export default {
       melinda: 'Is that from Star Trek or something?',
       monster: 2,
       background: 'bad',
+      delay: 4000,
     },
     {
       name: 'Picture',
-      you: 'I only take pictures from this side, it\'s my good side',
+      you: 'I only take pictures from this side, it\'s my good   side',
       robert: 'I\'m not taking your picture',
       melinda: 'Ok Narcissus',
       monster: 2,
       background: 'bad',
+      delay: 6000,
     },
     {
       name: 'Signs',
@@ -60,6 +67,7 @@ export default {
       melinda: 'This explains a lot.',
       monster: 3,
       background: 'bad',
+      delay: 4000,
     },
     {
       name: 'Wow',
@@ -68,6 +76,7 @@ export default {
       melinda: '....',
       monster: 4,
       background: 'bad',
+      delay: 4000,
     },
     {
       name: 'Mother',
@@ -76,6 +85,7 @@ export default {
       melinda: 'You\'re kidding? Right?',
       monster: 10,
       background: 'bad',
+      delay: 4000,
     },
     {
       name: 'Hair',
@@ -84,6 +94,7 @@ export default {
       melinda: '.....',
       monster: 5,
       background: 'bad',
+      delay: 4000,
     },
     {
       name: 'Zit',
@@ -92,6 +103,7 @@ export default {
       melinda: 'Concealer won\'t hide that..',
       monster: 7,
       background: 'bad',
+      delay: 6000,
     },
     {
       name: 'Trains',
@@ -100,6 +112,7 @@ export default {
       melinda: 'That must take a lot of dedication, good on you!',
       monster: -1,
       background: 'good',
+      delay: 4000,
     },
     {
       name: 'Exercise',
@@ -108,6 +121,7 @@ export default {
       melinda: 'Staying in shape is always worth it.',
       monster: -1,
       background: 'good',
+      delay: 4000,
     },
     {
       name: 'Charity',
@@ -116,6 +130,7 @@ export default {
       melinda: 'I re-home cats. From my house, to somewhere else.',
       monster: -2,
       background: 'good',
+      delay: 4000,
     },
     {
       name: 'Music',
@@ -124,6 +139,7 @@ export default {
       melinda: 'As long as it\'s rap and pays homage to veganism, firefly, or Tibet',
       monster: -2,
       background: 'good',
+      delay: 4000,
     },
     {
       name: '강아지',
@@ -132,6 +148,7 @@ export default {
       melinda: 'Woof.',
       monster: -1,
       background: 'good',
+      delay: 4000,
     },
     {
       name: 'Nervous',
@@ -140,6 +157,7 @@ export default {
       melinda: 'First dates are a little nerve wracking for sure',
       monster: -3,
       background: 'good',
+      delay: 4000,
     },
     {
       name: 'Eyes',
@@ -148,6 +166,7 @@ export default {
       melinda: 'They are windows to the soul',
       monster: -4,
       background: 'good',
+      delay: 4000,
     },
     {
       name: 'Geese',
@@ -156,6 +175,7 @@ export default {
       melinda: 'Geese are disgusting and literally the worst of all fowl.',
       monster: -10,
       background: 'good',
+      delay: 4000,
     },
   ],
 };

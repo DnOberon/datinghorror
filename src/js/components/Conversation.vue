@@ -3,7 +3,7 @@
 
     <el-container>
       <el-aside width="400px">
-        <div style="position: fixed; margin-left:4%;">
+        <div style="position: fixed;">
           <el-row :gutter="20">
             <el-col :span="24">
               <component :is="date"
@@ -107,7 +107,7 @@
               :text="reply(currentPiece)"
               :repeat="0"
               @completed="closeConversation(currentPiece)"
-              :pre-type-delay="4000"></vue-typer>
+              :pre-type-delay="currentPiece.delay"></vue-typer>
           </h3>
         </h1>
 
@@ -122,6 +122,7 @@
 <script>
   import draggable from 'vuedraggable';
   import { VueTyper } from 'vue-typer';
+  import { Howl } from 'howler';
   import conversation from '../utils/conversation';
 
   import Melinda from './Melinda';
@@ -145,6 +146,9 @@
         forward: false,
         help: true,
         date: this.$route.query.date,
+        closeSong: new Howl({
+          src: [require('../../assets/final.wav')],
+        }),
 
         currentPiece: {},
         monster: 0,
@@ -165,6 +169,10 @@
 
         this.dialogVisible = false;
         this.conversationOpen = true;
+
+        if (this.set.length === 3) {
+          this.closeSong.play();
+        }
       },
 
       reply(currentPiece) {
@@ -208,7 +216,7 @@
   }
 
   h3 {
-    font-size: 1.1em;
+    font-size: 0.9em;
   }
 
   .good {

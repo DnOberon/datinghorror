@@ -28,15 +28,9 @@
             img: '',
           },
           {
-            display: 'I hope you didn\'t give your real name. Or address.',
-            secondary: 'I\'d also avoid standing near any open windows for a while',
-            max: 15,
-            img: '',
-          },
-          {
             display: 'R.I.P',
             secondary: 'It will be a closed casket funeral, potentially empty casket too.',
-            max: 1000,
+            max: 15,
             img: '',
           },
         ],

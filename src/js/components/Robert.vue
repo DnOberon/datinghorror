@@ -83,7 +83,7 @@
   };
 </script>
 
-<style>
+<style scoped>
   h1, h2, h3, p {
     font-family: 'VT323', monospace;
     font-weight: normal;
@@ -98,30 +98,11 @@
   }
 
   h3 {
-    font-size: 1.1em;
+    font-size: 1.3em;
   }
 
-  .good {
-    background: #67c23a;
-    color: white;
-  }
-
-  .bad {
-    background: lightcoral;
-    color: white;
-  }
-
-  .el-row {
-    margin-bottom: 20px;
-  }
-
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity 1.5s;
-  }
-
-  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
-  {
-    opacity: 0;
+  img {
+    margin-bottom: -55px;
   }
 
 </style>

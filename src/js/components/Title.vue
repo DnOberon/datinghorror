@@ -1,17 +1,20 @@
 <template>
   <el-row :gutter="20">
 
-    <h1>
-      <vue-typer text="Puzzled and Dating a Monster." :repeat="0"></vue-typer>
+    <h1 style="margin-bottom: 0px;">
+      <vue-typer
+        :pre-type-delay="3000"
+        text="Puzzled and Dating a Monster."
+        :repeat="0"></vue-typer>
     </h1>
 
     <el-col :span="12" :offset="6">
-      <h2>
+      <h2 >
       <vue-typer
         :text="titleText"
         @completed="ready = true"
         :repeat="0"
-        :pre-type-delay="3000"></vue-typer>
+        :pre-type-delay="7000"></vue-typer>
       </h2>
     </el-col>
 
@@ -36,6 +39,7 @@
 
 <script>
   import { VueTyper } from 'vue-typer';
+  import { Howl } from 'howler';
 
   export default {
     name: 'Title',
@@ -46,22 +50,19 @@
       return {
         titleText: 'Small talk could save your life.',
         ready: false,
-        titleSong: new Audio(require('../../assets/titlescreen.wav')),
+        titleSong: new Howl({
+          src: [require('../../assets/titlescreen.wav')],
+          autoplay: true,
+        }),
       };
-    },
-
-    mounted() {
-      this.titleSong.play();
     },
 
     methods: {
       next(date) {
-        this.fadeOut();
+        this.titleSong.fade(1.0, 0.0, 15000);
+
+
         this.$router.push({ path: 'conversation', query: { date } });
-      },
-
-      fadeOut() {
-
       },
     },
   };
@@ -71,7 +72,6 @@
   h1, h2 {
     font-family: 'VT323', monospace;
     font-weight: normal;
-    margin-bottom: 0px;
   }
 
   .pixel{
@@ -100,7 +100,7 @@
   }
 
   .fade-enter-active, .fade-leave-active {
-    transition: opacity 1.5s;
+    transition: opacity 2.5s;
   }
 
   .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
