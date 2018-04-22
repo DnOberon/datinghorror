@@ -3,7 +3,9 @@
    <h1>{{ending.display}}</h1>
    <h2>{{ending.secondary}}</h2>
 
-    <img :src="graphic">
+    <img :src="graphic" style="margin-bottom: 20px">
+
+    <h2><a href="/">PLAY AGAIN</a></h2>
   </div>
 </template>
 
