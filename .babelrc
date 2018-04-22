@@ -7,7 +7,6 @@
     ["component", [
       {
         "libraryName": "element-ui",
-        "styleLibraryName": "theme-default"
       }
     ]]
   ]

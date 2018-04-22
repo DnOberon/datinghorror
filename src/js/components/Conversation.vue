@@ -225,10 +225,6 @@
     margin-bottom: 20px;
   }
 
-  .el-dialog {
-    margin-left: 60px;
-  }
-
   .fade-enter-active, .fade-leave-active {
     transition: opacity 1.5s;
   }
