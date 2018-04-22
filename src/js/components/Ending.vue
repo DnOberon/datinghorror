@@ -18,19 +18,19 @@
           {
             display: 'You got their number!',
             secondary: 'At least, we hope it\'s their number. If not - hopefully it\'s that new takeout place.',
-            max: 5,
+            max: 4,
             img: '',
           },
           {
             display: 'If you were an Uber driver - I wouldn\'t expect five stars.,',
             secondary: 'Thankfully no one threw up during the date.',
-            max: 8,
+            max: 7,
             img: '',
           },
           {
             display: 'I hope you didn\'t give your real name. Or address.',
             secondary: 'I\'d also avoid standing near any open windows for a while',
-            max: 11,
+            max: 15,
             img: '',
           },
           {

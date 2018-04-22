@@ -53,7 +53,7 @@
 
               <el-col :span="24" style="margin-bottom:5px;">
                 <el-card shadow="always">
-                  <h1>{{set.length}}/10</h1>
+                  <h1>{{set.length}}/7</h1>
                 </el-card>
               </el-col>
 
@@ -69,7 +69,7 @@
     </el-container>
 
     <el-dialog
-      title="Pieces"
+      title="Small Talk"
       :visible.sync="dialogVisible"
       :modal-append-to-body="false"
     >
@@ -160,7 +160,6 @@
     methods: {
       openConversation(piece) {
         this.currentPiece = piece;
-        this.forward = false;
         this.help = false;
 
 
@@ -181,9 +180,10 @@
       },
 
       finish() {
+        this.forward = false;
         this.conversationOpen = false;
 
-        if (this.set.length < 10) {
+        if (this.set.length < 7) {
           return;
         }
 

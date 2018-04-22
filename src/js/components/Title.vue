@@ -50,9 +50,18 @@
       };
     },
 
+    mounted() {
+      this.titleSong.play();
+    },
+
     methods: {
       next(date) {
+        this.fadeOut();
         this.$router.push({ path: 'conversation', query: { date } });
+      },
+
+      fadeOut() {
+
       },
     },
   };

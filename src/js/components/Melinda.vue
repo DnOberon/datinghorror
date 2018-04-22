@@ -10,7 +10,7 @@
       <h3><strong>Eyes: </strong>{{currentStep.eyes}}</h3>
       <h3><strong>Hair: </strong>{{currentStep.hair}}</h3>
       <h3><strong>Age: </strong> Older than you</h3>
-      <h3><strong>Likes: </strong>Vegans, Firefly</h3>
+      <h3><strong>Likes: </strong>Vegans, Firefly, Eminem</h3>
       <h3><strong>Dislikes: </strong>Cows, Star Trek</h3>
     </el-col>
   </el-row>
@@ -51,21 +51,21 @@
           },
           {
             name: 'normal',
-            max: 5,
+            max: 4,
             img: require('../../assets/dates/girl_normal.png'),
             eyes: 'Has them',
             hair: '....Purple',
           },
           {
             name: 'first',
-            max: 8,
+            max: 7,
             img: require('../../assets/dates/girl_first.png'),
             eyes: 'Sparks',
             hair: 'Not so purple',
           },
           {
             name: 'second',
-            max: 11,
+            max: 15,
             img: require('../../assets/dates/girl_penultimate.png'),
             eyes: 'Blazing',
             hair: 'Greenish?',
