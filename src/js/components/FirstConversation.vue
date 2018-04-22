@@ -7,6 +7,7 @@
       <el-row :gutter="20">
         <el-col :span="24">
         <h1>First Conversation</h1>
+        <h1>Sex: {{sex}}</h1>
         <h1>Monster Level: {{monster}}</h1>
         </el-col>
       </el-row>
@@ -108,77 +109,13 @@
         conversationOpen: false,
         goodButton: false,
         badButton: false,
+        sex: this.$route.query.sex,
 
         currentPiece: {},
         monster: 0,
 
-        set: [
-          {
-            name: 'Weather',
-            you: 'It looks like it might rain.',
-            them: 'Really?',
-            monster: 1,
-            background: 'bad',
-          },
-          {
-            name: 'Hair',
-            you: 'I like your hair - it is very poofy',
-            them: '.....',
-            monster: 5,
-            background: 'bad',
-          },
-          {
-            name: 'Hobby: Trains',
-            you: 'I love collecting toy trains.',
-            them: 'Me too!',
-            monster: -1,
-            background: 'good',
-          },
-          {
-            name: 'Hobby: Stamps',
-            you: 'I love collecting stamps.',
-            them: 'Is this the 1960\'s?',
-            monster: 1,
-            background: 'good',
-          },
-          {
-            name: 'Mother',
-            you: 'Sorry, my mother couldn\'t make it.',
-            them: 'I\'m glad...',
-            monster: 5,
-            background: 'bad',
-          },
-          {
-            name: 'Nervous',
-            you: 'I am a little nervous, sorry.',
-            them: 'It\'s ok, I am too.',
-            monster: -5,
-            background: 'good',
-          },
-          {
-            name: '1',
-            you: '1',
-            them: '1',
-            monster: -5,
-            background: 'good',
-          },
-          {
-            name: '2',
-            you: '2',
-            them: '2',
-            monster: -5,
-            background: 'good',
-          },
-          {
-            name: '3',
-            you: '3',
-            them: '3',
-            monster: -5,
-            background: 'good',
-          },
-        ],
+        set: [],
 
-        // color is element specific
         pieces: [
           {
             name: 'Weather',

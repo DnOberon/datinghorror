@@ -1,12 +1,13 @@
 <template>
-  <el-row>
-    <el-col :span="24">
+  <el-row :gutter="20">
+    <el-col :span="12" :offset="6">
       <vue-typer :text="titleText" @completed="ready = true" :repeat="0"></vue-typer>
     </el-col>
 
     <transition name="fade">
       <el-col v-show="ready" :span="24">
-        <el-button type="info" @click="next">Start</el-button>
+        <el-button type="info" @click="next('female')">Start Female</el-button>
+        <el-button type="info" @click="next('male')">Start Male</el-button>
       </el-col>
     </transition>
 
@@ -29,15 +30,15 @@
     },
 
     methods: {
-      next() {
-        this.$router.push({ path: 'first-conversation' });
+      next(sex) {
+        this.$router.push({ path: 'first-conversation', query: { sex } });
       },
     },
   };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
   h1, h2 {
     font-weight: normal;
   }
@@ -52,11 +53,12 @@
   a {
     color: #42b983;
   }
-
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
+  .vue-typer{
+    font-family: 'VT323', monospace;
   }
-  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    opacity: 0;
+
+  .vue-typer .custom.caret {
+    width: 10px;
+    background-color: #3F51B5;
   }
 </style>
