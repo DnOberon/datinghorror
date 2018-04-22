@@ -1,16 +1,34 @@
 <template>
   <el-row :gutter="20">
+
+    <h1>
+      <vue-typer text="Puzzled and Dating a Monster." :repeat="0"></vue-typer>
+    </h1>
+
     <el-col :span="12" :offset="6">
-      <vue-typer :text="titleText" @completed="ready = true" :repeat="0"></vue-typer>
+      <vue-typer
+        :text="titleText"
+        @completed="ready = true"
+        :repeat="0"
+        :pre-type-delay="3000"></vue-typer>
     </el-col>
 
+
     <transition name="fade">
-      <el-col v-show="ready" :span="24">
-        <el-button type="info" @click="next('female')">Start Female</el-button>
-        <el-button type="info" @click="next('male')">Start Male</el-button>
-      </el-col>
+      <el-row :gutter="20" v-show="ready">
+        <el-col :span="6" :offset="6" style="margin-top: 10px;">
+          <el-button type="info" @click="next('female')">Date Melinda</el-button>
+        </el-col>
+
+        <el-col :span="6" style="margin-top: 10px;">
+          <el-button type="info" @click="next('male')">Date Robert</el-button>
+        </el-col>
+
+      </el-row>
+
     </transition>
 
+    <img :src="require('../../assets/props/bench.png')">
   </el-row>
 </template>
 
@@ -24,7 +42,7 @@
 
     data() {
       return {
-        titleText: 'This is a placeholder text. This is a horror dating simulator.',
+        titleText: 'Small talk could save your life.',
         ready: false,
       };
     },
@@ -40,25 +58,35 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
   h1, h2 {
+    font-family: 'VT323', monospace;
     font-weight: normal;
   }
+
   ul {
     list-style-type: none;
     padding: 0;
   }
+
   li {
     display: inline-block;
     margin: 0 10px;
   }
+
   a {
     color: #42b983;
   }
-  .vue-typer{
+
+  .vue-typer {
     font-family: 'VT323', monospace;
   }
 
-  .vue-typer .custom.caret {
-    width: 10px;
-    background-color: #3F51B5;
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 1.5s;
   }
+
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+  {
+    opacity: 0;
+  }
+
 </style>
